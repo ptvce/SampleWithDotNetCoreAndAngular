@@ -1,0 +1,56 @@
+﻿@model List<ProductModel>
+
+@{ Layout = null;}
+
+
+    <div class="card todo">
+        <div class="card-body">
+            <h4 class="card-title">Top Products</h4>
+            <h6 class="card-subtitle">Top Products List</h6>
+        </div>
+
+        <div class="listview">
+            @foreach (var item in Model)
+            {
+                <div class="listview__item">
+                    <div class="checkbox-char todo__item">
+                        <input type="checkbox" id="char-1">
+                        <label for="char-1">@item.ProductId</label>
+
+                        <div class="listview__content">
+                            <div class="listview__heading">@item.ProductName</div>
+                            <p>@item.UnitPrice</p>
+
+                            <div class="listview__attrs">
+                                <span>#Messages</span>
+                                <span>!!!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions listview__actions">
+                        <div class="dropdown actions__item">
+                            <i class="zwicon-more-h" data-toggle="dropdown"></i>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="https://byrushan.com/projects/super-admin/app/2.2/">Mark as completed</a>
+                                <a class="dropdown-item" href="https://byrushan.com/projects/super-admin/app/2.2/">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/todos.html" class="view-more">View More</a>
+            
+            </div>
+    </div>
+
+<div>
+    @foreach (var item in Model)
+    {
+       <div class="card">
+           <h3> @item.ProductName </h3>
+           <p> @item.UnitPrice </p>
+       </div>
+    }
+</div>

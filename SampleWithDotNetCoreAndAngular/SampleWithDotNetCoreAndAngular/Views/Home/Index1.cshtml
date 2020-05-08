@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+    var images = new List<string>
+{
+        "https://s.fotorama.io/1.jpg",
+        "https://s.fotorama.io/2.jpg",
+        "https://s.fotorama.io/3.jpg"
+    };
+
+    var posters = new List<string>
+{
+        "https://s.fotorama.io/4.jpg",
+        "https://s.fotorama.io/5.jpg",
+    };
+
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col">
+        <partial name="_ImageCarousel" model="@images" />
+    </div>
+    <div class="col">
+        <partial name="_ImageCarousel" model="@posters" />
+    </div>
+</div>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to ASP.NET Core 3.1</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

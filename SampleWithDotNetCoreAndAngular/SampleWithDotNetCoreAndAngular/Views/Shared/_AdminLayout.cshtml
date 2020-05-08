@@ -1,0 +1,679 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0050)https://byrushan.com/projects/super-admin/app/2.2/ -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"]</title>
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="/css/superAdmin/zwicon.min.css">
+    <link rel="stylesheet" href="/css/superAdmin/animate.min.css">
+    <link rel="stylesheet" href="/css/superAdmin/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="/css/superAdmin/main.min.css">
+    <link rel="stylesheet" href="/css/superAdmin/main.min(1).css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="/css/superAdmin/app.min.css">
+</head>
+
+<body data-sa-theme="1">
+    <main class="main">
+        <div class="page-loader">
+            <div class="page-loader__spinner">
+                <svg viewBox="25 25 50 50">
+                    <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+                </svg>
+            </div>
+        </div>
+
+        <header class="header">
+            <div class="navigation-trigger d-xl-none" data-sa-action="aside-open" data-sa-target=".sidebar">
+                <i class="zwicon-hamburger-menu"></i>
+            </div>
+
+            <div class="logo d-none d-sm-inline-flex">
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/index.html">Super Admin 2.0</a>
+            </div>
+
+            <form class="search">
+                <div class="search__inner">
+                    <input type="text" class="search__text" placeholder="Search for people, files, documents...">
+                    <i class="zwicon-search search__helper"></i>
+                    <i class="zwicon-arrow-left search__reset" data-sa-action="search-close"></i>
+                </div>
+            </form>
+
+            <ul class="top-nav">
+                <li class="d-xl-none"><a href="https://byrushan.com/projects/super-admin/app/2.2/" data-sa-action="search-open"><i class="zwicon-search"></i></a></li>
+
+                <li class="dropdown">
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/" data-toggle="dropdown" class="top-nav__notify"><i class="zwicon-mail"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--block">
+                        <div class="dropdown-header">
+                            Messages
+
+                            <div class="actions">
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/messages.html" class="actions__item zwicon-plus"></a>
+                            </div>
+                        </div>
+
+                        <div class="listview listview--hover">
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                <img src="/images/superAdmin/1.jpg" class="avatar-img" alt="">
+
+                                <div class="listview__content">
+                                    <div class="listview__heading">
+                                        David Belle <small>12:01 PM</small>
+                                    </div>
+                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
+                                </div>
+                            </a>
+
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                <img src="/images/superAdmin/2.jpg" class="avatar-img" alt="">
+
+                                <div class="listview__content">
+                                    <div class="listview__heading">
+                                        Jonathan Morris
+                                        <small>02:45 PM</small>
+                                    </div>
+                                    <p>Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</p>
+                                </div>
+                            </a>
+
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                <img src="/images/superAdmin/3.jpg" class="avatar-img" alt="">
+
+                                <div class="listview__content">
+                                    <div class="listview__heading">
+                                        Fredric Mitchell Jr.
+                                        <small>08:21 PM</small>
+                                    </div>
+                                    <p>Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</p>
+                                </div>
+                            </a>
+
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                <img src="/images/superAdmin/4.jpg" class="avatar-img" alt="">
+
+                                <div class="listview__content">
+                                    <div class="listview__heading">
+                                        Glenn Jecobs
+                                        <small>08:43 PM</small>
+                                    </div>
+                                    <p>Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</p>
+                                </div>
+                            </a>
+
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                <img src="/images/superAdmin/5.jpg" class="avatar-img" alt="">
+
+                                <div class="listview__content">
+                                    <div class="listview__heading">
+                                        Bill Phillips
+                                        <small>11:32 PM</small>
+                                    </div>
+                                    <p>Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</p>
+                                </div>
+                            </a>
+
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="view-more">View all messages</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="dropdown top-nav__notifications">
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/" data-toggle="dropdown" class="top-nav__notify">
+                        <i class="zwicon-bell"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--block">
+                        <div class="dropdown-header">
+                            Notifications
+
+                            <div class="actions">
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="actions__item zwicon-checkmark-square" data-sa-action="notifications-clear"></a>
+                            </div>
+                        </div>
+
+                        <div class="listview listview--hover">
+                            <div class="listview__scroll scrollbar">
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                    <img src="/images/superAdmin/1.jpg" class="avatar-img" alt="">
+
+                                    <div class="listview__content">
+                                        <div class="listview__heading">David Belle</div>
+                                        <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
+                                    </div>
+                                </a>
+
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                    <img src="/images/superAdmin/2.jpg" class="avatar-img" alt="">
+
+                                    <div class="listview__content">
+                                        <div class="listview__heading">Jonathan Morris</div>
+                                        <p>Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</p>
+                                    </div>
+                                </a>
+
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                    <img src="/images/superAdmin/3.jpg" class="avatar-img" alt="">
+
+                                    <div class="listview__content">
+                                        <div class="listview__heading">Fredric Mitchell Jr.</div>
+                                        <p>Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</p>
+                                    </div>
+                                </a>
+
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                    <img src="/images/superAdmin/4.jpg" class="avatar-img" alt="">
+
+                                    <div class="listview__content">
+                                        <div class="listview__heading">Glenn Jecobs</div>
+                                        <p>Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</p>
+                                    </div>
+                                </a>
+
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                    <img src="/images/superAdmin/5.jpg" class="avatar-img" alt="">
+
+                                    <div class="listview__content">
+                                        <div class="listview__heading">Bill Phillips</div>
+                                        <p>Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</p>
+                                    </div>
+                                </a>
+
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                    <img src="/images/superAdmin/1.jpg" class="avatar-img" alt="">
+
+                                    <div class="listview__content">
+                                        <div class="listview__heading">David Belle</div>
+                                        <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
+                                    </div>
+                                </a>
+
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                    <img src="/images/superAdmin/2.jpg" class="avatar-img" alt="">
+
+                                    <div class="listview__content">
+                                        <div class="listview__heading">Jonathan Morris</div>
+                                        <p>Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</p>
+                                    </div>
+                                </a>
+
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                    <img src="/images/superAdmin/3.jpg" class="avatar-img" alt="">
+
+                                    <div class="listview__content">
+                                        <div class="listview__heading">Fredric Mitchell Jr.</div>
+                                        <p>Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="p-1"></div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="dropdown d-none d-sm-inline-block">
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/" data-toggle="dropdown"><i class="zwicon-checkmark-circle"></i></a>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                        <div class="dropdown-header">Tasks</div>
+
+                        <div class="listview listview--hover">
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                <div class="listview__content">
+                                    <div class="listview__heading">HTML5 Validation Report</div>
+
+                                    <div class="progress mt-1">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                <div class="listview__content">
+                                    <div class="listview__heading">Google Chrome Extension</div>
+
+                                    <div class="progress mt-1">
+                                        <div class="progress-bar bg-warning" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                <div class="listview__content">
+                                    <div class="listview__heading">Social Intranet Projects</div>
+
+                                    <div class="progress mt-1">
+                                        <div class="progress-bar bg-success" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                <div class="listview__content">
+                                    <div class="listview__heading">Bootstrap Admin Template</div>
+
+                                    <div class="progress mt-1">
+                                        <div class="progress-bar bg-info" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="listview__item">
+                                <div class="listview__content">
+                                    <div class="listview__heading">Youtube Client App</div>
+
+                                    <div class="progress mt-1">
+                                        <div class="progress-bar bg-danger" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="view-more">View all Tasks</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="dropdown d-none d-sm-inline-block">
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/" data-toggle="dropdown"><i class="zwicon-grid"></i></a>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                        <div class="row app-shortcuts">
+                            <a class="col-4 app-shortcuts__item" href="https://byrushan.com/projects/super-admin/app/2.2/">
+                                <i class="zwicon-calendar-never"></i>
+                                <small class="">Calendar</small>
+                            </a>
+                            <a class="col-4 app-shortcuts__item" href="https://byrushan.com/projects/super-admin/app/2.2/">
+                                <i class="zwicon-document"></i>
+                                <small class="">Files</small>
+                            </a>
+                            <a class="col-4 app-shortcuts__item" href="https://byrushan.com/projects/super-admin/app/2.2/">
+                                <i class="zwicon-mail"></i>
+                                <small class="">Email</small>
+                            </a>
+                            <a class="col-4 app-shortcuts__item" href="https://byrushan.com/projects/super-admin/app/2.2/">
+                                <i class="zwicon-line-chart"></i>
+                                <small class="">Reports</small>
+                            </a>
+                            <a class="col-4 app-shortcuts__item" href="https://byrushan.com/projects/super-admin/app/2.2/">
+                                <i class="zwicon-broadcast"></i>
+                                <small class="">News</small>
+                            </a>
+                            <a class="col-4 app-shortcuts__item" href="https://byrushan.com/projects/super-admin/app/2.2/">
+                                <i class="zwicon-image"></i>
+                                <small class="">Gallery</small>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="dropdown d-none d-sm-inline-block">
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/" data-toggle="dropdown"><i class="zwicon-more-h"></i></a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="dropdown-item" data-sa-action="fullscreen">Fullscreen</a>
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="dropdown-item">Clear Local Storage</a>
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="dropdown-item">Settings</a>
+                    </div>
+                </li>
+
+                <li class="d-none d-sm-inline-block">
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="top-nav__themes" data-sa-action="aside-open" data-sa-target=".themes"><i class="zwicon-palette"></i></a>
+                </li>
+            </ul>
+
+            <div class="clock d-none d-md-inline-block">
+                <div class="time">
+                    <span class="time__hours"></span>
+                    <span class="time__min"></span>
+                    <span class="time__sec"></span>
+                </div>
+            </div>
+        </header>
+
+        <aside class="sidebar ">
+            <div class="scrollbar">
+                <div class="user">
+                    <div class="user__info" data-toggle="dropdown">
+                        <img class="user__img" src="/images/superAdmin/8.jpg" alt="">
+                        <div>
+                            <div class="user__name">Malinda Hollaway</div>
+                            <div class="user__email">malinda-h@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-menu dropdown-menu--invert">
+                        <a class="dropdown-item" href="https://byrushan.com/projects/super-admin/app/2.2/">View Profile</a>
+                        <a class="dropdown-item" href="https://byrushan.com/projects/super-admin/app/2.2/">Settings</a>
+                        <a class="dropdown-item" href="https://byrushan.com/projects/super-admin/app/2.2/">Logout</a>
+                    </div>
+                </div>
+
+                <ul class="navigation">
+                    <li class="navigation__active"><a href="https://byrushan.com/projects/super-admin/app/2.2/index.html"><i class="zwicon-home"></i> Home</a></li>
+
+                    <li class="navigation__sub">
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/"><i class="zwicon-three-h"></i> Variants</a>
+
+                        <ul>
+                            <li><a href="https://byrushan.com/projects/super-admin/app/2.2/hidden-sidebar.html">Hidden Sidebar</a></li>
+                            <li><a href="https://byrushan.com/projects/super-admin/app/2.2/boxed-layout.html">Boxed Layout</a></li>
+                            <li><a href="https://byrushan.com/projects/super-admin/app/2.2/hidden-sidebar-boxed-layout.html">Boxed Layout with Hidden Sidebar</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/typography.html"><i class="zwicon-edit-square-feather"></i> Typography</a>
+                    </li>
+
+                    <li>
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/widgets.html"><i class="zwicon-layout-4"></i> Widgets</a>
+                    </li>
+
+                    <li class="navigation__sub">
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/"><i class="zwicon-layout-2"></i> Tables</a>
+
+                        <ul>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/html-table.html">HTML Table</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/data-table.html">Data Table</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="navigation__sub">
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/"><i class="zwicon-note"></i> Forms</a>
+
+                        <ul>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/form-elements.html">Basic Form Elements</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/form-components.html">Form Components</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/form-layouts.html">Form Layouts</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/form-validation.html">Form Validation</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="navigation__sub">
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/"><i class="zwicon-cursor-square"></i> User Interface</a>
+
+                        <ul>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/colors.html">Colors</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/css-animations.html">CSS Animations</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/buttons.html">Buttons</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/icons.html">Icons</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/listview.html">Listview</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/toolbars.html">Toolbars</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/cards.html">Cards</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/alerts.html">Alerts</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/badges.html">Badges</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/breadcrumbs.html">Bredcrumbs</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/jumbotron.html">Jumbotron</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/navs.html">Navs</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/pagination.html">Pagination</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/progress.html">Progress</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="navigation__sub">
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/"><i class="zwicon-tray-stack"></i> Javascript Components</a>
+
+                        <ul class="navigation__sub">
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/carousel.html">Carousel</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/collapse.html">Collapse</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/dropdowns.html">Dropdowns</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/modals.html">Modals</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/popover.html">Popover</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/tabs.html">Tabs</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/tooltips.html">Tooltips</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/toast.html">Toasts</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/treeview.html">Tree View</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/custom-alerts.html">Custom Alerts</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="navigation__sub">
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/"><i class="zwicon-line-chart"></i> Charts</a>
+
+                        <ul>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/flot-charts.html">Flot</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/other-charts.html">Other Charts</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/maps.html">Maps</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/calendar.html"><i class="zwicon-calendar-never"></i> Calendar</a>
+                    </li>
+
+                    <li>
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/photo-gallery.html"><i class="zwicon-image"></i> Photo Gallery</a>
+                    </li>
+
+                    <li class="navigation__sub">
+                        <a href="https://byrushan.com/projects/super-admin/app/2.2/"><i class="zwicon-repository"></i> Sample Pages</a>
+
+                        <ul>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/profile-about.html">Profile</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/messages.html">Messages</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/contacts.html">Contacts</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/new-contact.html">New Contact</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/groups.html">Groups</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/pricing-tables.html">Pricing Tables</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/invoice.html">Invoice</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/todo-lists.html">Todo Lists</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/notes.html">Notes</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/search-results.html">Search Results</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/issue-tracker.html">Issue Tracker</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/faq.html">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/team.html">Team</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/blog.html">Blog</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/blog-detail.html">Blog Detail</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/questions-answers.html">Questions &amp; Answers</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/questions-answers-details.html">Questions &amp; Answers Details</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/login.html">Login &amp; SignUp</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/lockscreen.html">Lockscreen</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/404.html">404</a>
+                            </li>
+                            <li>
+                                <a href="https://byrushan.com/projects/super-admin/app/2.2/empty.html">Empty Page</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <div class="themes">
+            <div class="scrollbar">
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="themes__item active" data-sa-value="1"><img src="/images/superAdmin/bg/1.jpg" alt=""></a>
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="themes__item" data-sa-value="2"><img src="/images/superAdmin/bg/2.jpg" alt=""></a>
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="themes__item" data-sa-value="3"><img src="/images/superAdmin/bg/3.jpg" alt=""></a>
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="themes__item" data-sa-value="4"><img src="/images/superAdmin/bg/4.jpg" alt=""></a>
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="themes__item" data-sa-value="5"><img src="/images/superAdmin/bg/5.jpg" alt=""></a>
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="themes__item" data-sa-value="6"><img src="/images/superAdmin/bg/6.jpg" alt=""></a>
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="themes__item" data-sa-value="7"><img src="/images/superAdmin/bg/7.jpg" alt=""></a>
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="themes__item" data-sa-value="8"><img src="/images/superAdmin/bg/8.jpg" alt=""></a>
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="themes__item" data-sa-value="9"><img src="/images/superAdmin/bg/9.jpg" alt=""></a>
+                <a href="https://byrushan.com/projects/super-admin/app/2.2/" class="themes__item" data-sa-value="10"><img src="/images/superAdmin/bg/10.jpg" alt=""></a>
+            </div>
+        </div>
+
+        <section class="content">
+            @RenderBody()
+
+            <footer class="footer d-none d-sm-block">
+                <p>© Super Admin Responsive. All rights reserved.</p>
+
+                <ul class="footer__nav">
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/">Homepage</a>
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/">Company</a>
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/">Support</a>
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/">News</a>
+                    <a href="https://byrushan.com/projects/super-admin/app/2.2/">Contacts</a>
+                </ul>
+            </footer>
+        </section>
+    </main>
+
+    <!-- Older IE warning message -->
+    <!--[if IE]>
+        <div class="ie-warning">
+            <h1>Warning!!</h1>
+            <p>You are using an outdated version of Internet Explorer, please upgrade to any of the following web browsers to access this website.</p>
+
+            <div class="ie-warning__downloads">
+                <a href="http://www.google.com/chrome">
+                    <img src="img/browsers/chrome.png" alt="">
+                </a>
+
+                <a href="https://www.mozilla.org/en-US/firefox/new">
+                    <img src="img/browsers/firefox.png" alt="">
+                </a>
+
+                <a href="http://www.opera.com">
+                    <img src="img/browsers/opera.png" alt="">
+                </a>
+
+                <a href="https://support.apple.com/downloads/safari">
+                    <img src="img/browsers/safari.png" alt="">
+                </a>
+
+                <a href="https://www.microsoft.com/en-us/windows/microsoft-edge">
+                    <img src="img/browsers/edge.png" alt="">
+                </a>
+
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="img/browsers/ie.png" alt="">
+                </a>
+            </div>
+            <p>Sorry for the inconvenience!</p>
+        </div>
+    <![endif]-->
+    <!-- Javascript -->
+    <!-- Vendors -->
+    <script src="/js/superAdmin/jquery.min.js"></script>
+    <script src="/js/superAdmin/popper.min.js"></script>
+    <script src="/js/superAdmin/bootstrap.min.js"></script>
+    <script src="/js/superAdmin/jquery.overlayScrollbars.min.js"></script>
+
+    <script src="/js/superAdmin/jquery.flot.js"></script>
+    <script src="/js/superAdmin/jquery.flot.resize.js"></script>
+    <script src="/js/superAdmin/curvedLines.js"></script>
+    <script src="/js/superAdmin/jquery.peity.min.js"></script>
+    <script src="/js/superAdmin/jquery.vmap.min.js"></script>
+    <script src="/js/superAdmin/jquery.vmap.world.js"></script>
+    <script src="/js/superAdmin/jquery.easypiechart.min.js"></script>
+    <script src="/js/superAdmin/main.min.js"></script>
+    <script src="/js/superAdmin/main.min.js(1)"></script>
+
+    <!-- App functions and actions -->
+    <script src="/js/superAdmin/app.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

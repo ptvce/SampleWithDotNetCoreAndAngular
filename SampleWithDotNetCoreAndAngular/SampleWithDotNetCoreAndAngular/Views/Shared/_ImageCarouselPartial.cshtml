@@ -1,0 +1,18 @@
+﻿
+
+@model List<string>
+
+
+@{
+    Layout = null;
+}
+
+
+
+
+<div class="fotorama">
+    @foreach (var item in Model)
+    {
+        <img src="@item">
+    }
+</div>
