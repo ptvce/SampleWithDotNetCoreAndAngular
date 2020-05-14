@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SampleWithDotNetCoreAndAngular.Helper;
 
 namespace SampleWithDotNetCoreAndAngular
 {
@@ -23,8 +24,16 @@ namespace SampleWithDotNetCoreAndAngular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region DI Register
+
+            services.AddScoped(typeof(ICategoryHelper), typeof(CategoryHelper));
+            services.AddScoped(typeof(IProductHelper), typeof(ProductHelper));
+            #endregion
+
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

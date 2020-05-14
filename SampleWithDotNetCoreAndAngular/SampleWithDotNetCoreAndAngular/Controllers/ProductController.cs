@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SampleWithDotNetCoreAndAngular.Helper;
 using SampleWithDotNetCoreAndAngular.Models;
 
 namespace SampleWithDotNetCoreAndAngular.Controllers
 {
     public class ProductController : Controller
     {
-        public IActionResult Index()
+        ICategoryHelper _categoryHelper;
+        IProductHelper _productHelper;
+        public ProductController(ICategoryHelper categoryHelper, IProductHelper productHelper)
         {
-            var products = SampleDB.Products;
+            _categoryHelper = categoryHelper;
+            _productHelper = productHelper;
+        }
+        public async Task<IActionResult> Index()
+        {
+            //var products = SampleDB.Products;
+            var products = await _productHelper.GetAllAsync();
             // we can use ViewBag or ViewData for send data 
             //from action to view, we just use one of them
             ViewBag.Name = "My Product";
@@ -27,25 +36,35 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
         {
             return Json(SampleDB.Products);
         }
+
         #region Create
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             ModelState.AddModelError("", "زمان ثبت نام گذشته");
             ModelState.AddModelError("ProductName", "اجباری است");
 
-            ViewData["Categories"] = SampleDB.Categories;
+            //ViewData["Categories"] = SampleDB.Categories;
+            var categories =await _categoryHelper.GetAllAsync();
+            ViewData["Categories"] = categories;
+
             return View();
         }
+
         [HttpPost]
-        public IActionResult Create(ProductModel model)
+        public async Task<IActionResult> Create(ProductModel model)
         {
           if (!ModelState.IsValid)
             {
-                ViewData["Categories"] = SampleDB.Categories;
+                // ViewData["Categories"] = SampleDB.Categories;
+                var categories = await _categoryHelper.GetAllAsync();
+                ViewData["Categories"] = categories;
+
                 return View(model);
             }
-            SampleDB.Products.Add(model);
+
+            // SampleDB.Products.Add(model);
+            await _productHelper.AddAsync(model);
             return RedirectToAction("Index");
         }
         #endregion
