@@ -24,7 +24,6 @@
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-               @* <input asp-for="CategoryId" class="form-control" />*@
                 <select class="form-control" asp-for="CategoryId" asp-items="@(new SelectList((List<CategoryModel>)ViewData["Categories"],"CategoryId","CategoryName"))"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>

@@ -31,12 +31,20 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ModelState.AddModelError("", "زمان ثبت نام گذشته");
+            ModelState.AddModelError("ProductName", "اجباری است");
+
             ViewData["Categories"] = SampleDB.Categories;
             return View();
         }
         [HttpPost]
         public IActionResult Create(ProductModel model)
         {
+          if (!ModelState.IsValid)
+            {
+                ViewData["Categories"] = SampleDB.Categories;
+                return View(model);
+            }
             SampleDB.Products.Add(model);
             return RedirectToAction("Index");
         }
