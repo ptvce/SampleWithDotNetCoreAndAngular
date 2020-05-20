@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using SampleWithDotNetCoreAndAngular.Common;
 using SampleWithDotNetCoreAndAngular.Helper;
 using SampleWithDotNetCoreAndAngular.Models;
 
@@ -12,15 +14,20 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
     {
         ICategoryHelper _categoryHelper;
         IProductHelper _productHelper;
-        public ProductController(ICategoryHelper categoryHelper, IProductHelper productHelper)
+        ILogger<ProductModel> _logger;
+        public ProductController(ICategoryHelper categoryHelper, IProductHelper productHelper, ILogger<ProductModel> logger)
         {
             _categoryHelper = categoryHelper;
             _productHelper = productHelper;
+            _logger = logger;
         }
         public async Task<IActionResult> Index()
         {
+            _logger.LogInformation("show product list with browser:" + Request.Headers["User-Agent"].ToString());
             //var products = SampleDB.Products;
             var products = await _productHelper.GetAllAsync();
+
+            var (productss, categories) = await _productHelper.GetMultipleProduct_CategoryAsync();
             // we can use ViewBag or ViewData for send data 
             //from action to view, we just use one of them
             ViewBag.Name = "My Product";
@@ -64,17 +71,19 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
             }
 
             // SampleDB.Products.Add(model);
-            await _productHelper.AddAsync(model);
+            //await _productHelper.AddAsync(model);
+            await _productHelper.AddWithSPAsync(model);
             return RedirectToAction("Index");
         }
         #endregion
 
         #region Edit
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             ViewData["Categories"] = SampleDB.Categories;
-            var model = SampleDB.Products.FirstOrDefault(q => q.ProductId == id);
+            // var model = SampleDB.Products.FirstOrDefault(q => q.ProductId == id);
+           var model = await  _productHelper.GetAsync(id);
             return View(model);
         }
         [HttpPost]
