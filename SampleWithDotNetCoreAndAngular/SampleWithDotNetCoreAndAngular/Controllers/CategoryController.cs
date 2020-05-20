@@ -14,9 +14,10 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
         {
             _categoryHelper = categoryHelper;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int page=1)
         {
-            return View();
+            var result = await _categoryHelper.GetWithPaginationAsync(page);
+            return View(result);
         }
     }
 }

@@ -1,0 +1,58 @@
+﻿@model PaginationResultModel<CategoryModel>
+
+@{
+    ViewData["Title"] = "Index";
+    var category = Model.Data.FirstOrDefault();
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => category.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => category.CategoryName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.Pages; i++)
+        {
+            if (i == Model.Page)
+            {
+                <li class="page-item active"><a class="page-link" href="/Category/Index?page=@i">@i</a></li>
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link" href="/Category/Index?page=@i">@i</a></li>
+            }
+        }
+    </ul>
+</nav>
