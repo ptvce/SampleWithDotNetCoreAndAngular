@@ -69,6 +69,10 @@ namespace SampleWithDotNetCoreAndAngular
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "cultureRout",
+                    pattern: "{culture=fa}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

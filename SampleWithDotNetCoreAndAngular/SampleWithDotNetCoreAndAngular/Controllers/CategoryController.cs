@@ -14,7 +14,11 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
         {
             _categoryHelper = categoryHelper;
         }
-        public async Task<IActionResult> Index(int page=1)
+
+        //from query string => http://localhost/product?code=10&page=1
+        // from routing => http://localhost/product/10/1
+
+        public async Task<IActionResult> Index([FromQuery]int page=1)
         {
             var result = await _categoryHelper.GetWithPaginationAsync(page);
             return View(result);

@@ -21,6 +21,8 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
             _productHelper = productHelper;
             _logger = logger;
         }
+        [Route("Product")]
+        [Route("Product/showall/{page?}")]
         public async Task<IActionResult> Index()
         {
             _logger.LogInformation("show product list with browser:" + Request.Headers["User-Agent"].ToString());
