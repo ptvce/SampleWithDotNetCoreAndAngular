@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SampleWithDotNetCoreAndAngular.Common;
+using SampleWithDotNetCoreAndAngular.Data;
+using SampleWithDotNetCoreAndAngular.Entites;
 using SampleWithDotNetCoreAndAngular.Helper;
 using SampleWithDotNetCoreAndAngular.Models;
 
@@ -15,26 +18,41 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
         ICategoryHelper _categoryHelper;
         IProductHelper _productHelper;
         ILogger<ProductModel> _logger;
-        public ProductController(ICategoryHelper categoryHelper, IProductHelper productHelper, ILogger<ProductModel> logger)
+        CoreLearningContext _coreLearningContext;
+        public ProductController(ICategoryHelper categoryHelper, IProductHelper productHelper, ILogger<ProductModel> logger, CoreLearningContext coreLearningContext)
         {
             _categoryHelper = categoryHelper;
             _productHelper = productHelper;
             _logger = logger;
+            _coreLearningContext = coreLearningContext;
         }
         [Route("Product")]
+        [Route("Product/Index")]
         [Route("Product/showall/{page?}")]
         public async Task<IActionResult> Index()
         {
             _logger.LogInformation("show product list with browser:" + Request.Headers["User-Agent"].ToString());
             //var products = SampleDB.Products;
+            
+            //with dapper
             var products = await _productHelper.GetAllAsync();
-
             var (productss, categories) = await _productHelper.GetMultipleProduct_CategoryAsync();
+
+            //with ef core
+            var result = _coreLearningContext.Products.ToList();
+                //or
+            var result2 = _coreLearningContext.Products.Select(q => new ProductModel
+            {
+                CategoryId = q.CategoryId,
+                ProductName = q.ProductName,
+                UnitPrice = q.UnitPrice.Value,
+                ProductId = q.ProductId
+            });
             // we can use ViewBag or ViewData for send data 
             //from action to view, we just use one of them
             ViewBag.Name = "My Product";
             ViewData["Name"] = "Product";
-            return View(products);
+            return View(result2);
         }
 
         /// <summary>
@@ -74,7 +92,25 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
 
             // SampleDB.Products.Add(model);
             //await _productHelper.AddAsync(model);
+
+            // with dapper
             await _productHelper.AddWithSPAsync(model);
+
+            //with ef core
+            var productModel = new Products { 
+                CategoryId = model.CategoryId,
+                ProductName = model.ProductName,
+                UnitPrice = model.UnitPrice
+            };
+
+            //syntax1
+            await _coreLearningContext.AddAsync(productModel);
+            //syntax2
+            //await _coreLearningContext.Products.AddAsync(productModel);
+
+            await _coreLearningContext.SaveChangesAsync();
+           
+
             return RedirectToAction("Index");
         }
         #endregion
@@ -89,13 +125,26 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult Edit(int id, ProductModel model)
+        public async Task<IActionResult> Edit(int id, ProductModel model)
         {
             var index = SampleDB.Products.FindIndex(q => q.ProductId == id);
             if (index != -1) 
             {
                 model.ProductId = id;
-                SampleDB.Products[index] = model;
+                //SampleDB.Products[index] = model;
+
+                //with ef core
+                //step1: get item from db
+                var product = await _coreLearningContext.Products.SingleOrDefaultAsync(q => q.ProductId == id);
+
+                //step2: set new value , entity state = modified
+                product.ProductName = model.ProductName;
+                product.UnitPrice = model.UnitPrice;
+                product.CategoryId = model.CategoryId;
+
+                //step3: save change
+                await _coreLearningContext.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -104,12 +153,22 @@ namespace SampleWithDotNetCoreAndAngular.Controllers
         #endregion
 
         #region Delete
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var index = SampleDB.Products.FindIndex(q => q.ProductId == id);
             if (index != -1)
             {
-                SampleDB.Products.RemoveAt(index);
+                //SampleDB.Products.RemoveAt(index);
+
+                //with ef core
+                //step1 : get item from db
+                var product = await _coreLearningContext.Products.SingleOrDefaultAsync(q => q.ProductId == id);
+
+                //step2: remove product from dbcontext > change state to deleted
+                _coreLearningContext.Products.Remove(product);
+
+                //step3: save change
+                await  _coreLearningContext.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");

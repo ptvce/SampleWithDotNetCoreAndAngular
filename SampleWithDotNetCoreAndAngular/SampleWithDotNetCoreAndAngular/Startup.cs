@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SampleWithDotNetCoreAndAngular.Common;
+using SampleWithDotNetCoreAndAngular.Data;
 using SampleWithDotNetCoreAndAngular.Helper;
 using Serilog;
 
@@ -27,6 +29,10 @@ namespace SampleWithDotNetCoreAndAngular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region DBContext Register
+            //code first or db first
+            services.AddDbContext<CoreLearningContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CoreLearningDB")));
+            #endregion
             #region DI Register
 
             services.AddScoped(typeof(ICategoryHelper), typeof(CategoryHelper));
