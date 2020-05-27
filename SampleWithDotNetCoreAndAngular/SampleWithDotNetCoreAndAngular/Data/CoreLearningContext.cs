@@ -44,6 +44,12 @@ namespace SampleWithDotNetCoreAndAngular.Data
                 entity.HasKey(e => e.ProductId);
 
                 entity.Property(e => e.ProductName).HasMaxLength(120);
+
+                entity.HasOne(d => d.Category)
+                    .WithMany(p => p.Products)
+                    .HasForeignKey(d => d.CategoryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Products_Categories");
             });
 
             OnModelCreatingPartial(modelBuilder);

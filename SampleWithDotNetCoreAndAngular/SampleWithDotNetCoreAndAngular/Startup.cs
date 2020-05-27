@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using SampleWithDotNetCoreAndAngular.Common;
 using SampleWithDotNetCoreAndAngular.Data;
 using SampleWithDotNetCoreAndAngular.Helper;
+using SampleWithDotNetCoreAndAngular.Repository;
 using Serilog;
 
 namespace SampleWithDotNetCoreAndAngular
@@ -38,6 +39,7 @@ namespace SampleWithDotNetCoreAndAngular
             services.AddScoped(typeof(ICategoryHelper), typeof(CategoryHelper));
             services.AddScoped(typeof(IProductHelper), typeof(ProductHelper));
             services.AddScoped(typeof(ISqlUtility), typeof(SqlUtility));
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             #endregion
 
