@@ -1,0 +1,83 @@
+﻿@model ServicePaginationResult<ProductViewModel>
+@*@inject Microsoft.AspNetCore.Http.HttpContext httpContext;*@
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // string queryString = httpContext.Request.QueryString.Value;
+    string queryString = ViewData["QueryString"].ToString();
+    int andIndexOf;
+    if (queryString != null && queryString != "")
+    {
+        andIndexOf = queryString.IndexOf("&");
+        queryString = "?page={0}" + queryString.Substring(andIndexOf);
+    }
+
+
+}
+
+<h1>Product with Repository List</h1>
+
+<div class="card">
+    <div class="card-header"></div>
+    <div class="card-body">
+        <form>
+            <input type="hidden" value="1" name="page"/>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label>Product Name</label>
+                    <input type="text" class="form-control" name="ProductName" value="@ViewData["ProductName"]">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Category</label>
+                    <select asp-items="@((List<SelectListItem>)ViewData["Categories"])" class="form-control" name="CategoryId">
+                        <option>Select Category</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Price From</label>
+                    <input type="text" class="form-control" name="FromPrice" value="@ViewData["FromPrice"]">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>To</label>
+                    <input type="text" class="form-control" name="ToPrice" value="@ViewData["ToPrice"]">
+                </div>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+</div>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>CategoryName</th>
+            <th>Unit Price</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.CategoryName</td>
+                <td>@item.UnitPrice</td>
+                <td><a href="" class="btn btn-outline-info">View</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{ 
+    PaginationModel pagination = new PaginationModel {
+        Page = Model.Page.Value,
+        Pages = Model.Pages.Value,
+        Url = "/ProductWithRepository/Index" + queryString
+    };
+}
+<partial name="_PaginationPartial" model="@pagination"/>

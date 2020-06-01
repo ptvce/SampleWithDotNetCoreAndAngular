@@ -45,7 +45,7 @@ namespace SampleWithDotNetCoreAndAngular
 
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
-
+            //services.AddHttpContextAccessor();
 
         }
 
