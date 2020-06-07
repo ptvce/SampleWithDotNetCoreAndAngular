@@ -18,6 +18,7 @@ namespace SampleWithDotNetCoreAndAngular.Data
 
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

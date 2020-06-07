@@ -9,6 +9,8 @@ namespace SampleWithDotNetCoreAndAngular.Entites
         public int CategoryId { get; set; }
         public string ProductName { get; set; }
         public int? UnitPrice { get; set; }
+        public string Description { get; set; }
+        public int SortOrder { get; set; }
 
         public virtual Categories Category { get; set; }
     }
