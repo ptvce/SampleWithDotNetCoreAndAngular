@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleWithDotNetCoreAndAngu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Resources\Resources.csproj", "{5A68B1A2-C300-48BC-8509-71511736438D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFisrtSampleProject", "CodeFisrtSampleProject\CodeFisrtSampleProject.csproj", "{E4DFCFD4-BC7C-45B6-AE4A-27E93870596B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5A68B1A2-C300-48BC-8509-71511736438D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A68B1A2-C300-48BC-8509-71511736438D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A68B1A2-C300-48BC-8509-71511736438D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4DFCFD4-BC7C-45B6-AE4A-27E93870596B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4DFCFD4-BC7C-45B6-AE4A-27E93870596B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4DFCFD4-BC7C-45B6-AE4A-27E93870596B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4DFCFD4-BC7C-45B6-AE4A-27E93870596B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

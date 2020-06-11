@@ -1,0 +1,92 @@
+﻿@model CodeFisrtSampleProject.Entities.CourseClass
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>CourseClass</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="CourseId" class="control-label"></label>
+                    <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="card">
+                    <div class="card-header">Days</div>
+                    <div class="card-body" id="days">
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label class="control-label"></label>
+                                <select name="Days[0].DayId" class="form-control"></select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="control-label"></label>
+                                <input name="Days[0].StartTime" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="control-label"></label>
+                                <input name="Days[0].FinishTime" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-3 pt-4 row-action">
+                                <button class="btn btn-primary btn-sm btn-add" onclick="addNewRow(this,event)">Add</button>
+                                <button class="btn btn-danger btn-sm btn-delete" onclick="removeRow(this,event)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    function addNewRow(el, e) {
+        e.preventDefault();
+        var newRow = $(el).parents('.form-row').first().clone();
+        $("#days").append(newRow);
+    }
+    
+    const removeRow = (el, e) => {
+        e.preventDefault();
+        $(el).parents('.form-row').first().remove();
+    }
+
+
+</script>
+}
+
+@section Styles {
+<style>
+    #days .form-row .btn-add {
+        display: none;
+    }
+    #days .form-row:last-child .btn-add {
+        display:inline !important;
+    }
+    #days .form-row:first-child .btn-delete {
+        display: none;
+    }
+</style>
+}
