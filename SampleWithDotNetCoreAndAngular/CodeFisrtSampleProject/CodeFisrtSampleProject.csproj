@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200610151447_changetablenameandcolumnname.cs" />
     <Compile Remove="Migrations\20200610151447_changetablenameandcolumnname.Designer.cs" />
+    <Compile Remove="Migrations\20200616174758_add-province.cs" />
+    <Compile Remove="Migrations\20200616174758_add-province.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,10 +14,14 @@ namespace CodeFisrtSampleProject.Data
         }
 
         #region Add DBSet
+
         public virtual DbSet<CourseCategory> CourseCategories { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<CourseClass> CourseClasses { get; set; }
         public virtual DbSet<CourseClassDay> CourseClassDays { get; set; }
+        public virtual DbSet<Province> Province { get; set; }
+        public virtual DbSet<City> City { get; set; }
+
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

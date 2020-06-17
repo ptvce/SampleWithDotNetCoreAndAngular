@@ -1,17 +1,36 @@
 ﻿@model CodeFisrtSampleProject.Entities.CourseClass
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create With Ajax";
 }
 
-<h1>Create</h1>
+<h1>Create With Ajax</h1>
 
 <h4>CourseClass</h4>
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Create">
+        <form asp-action="Create" onsubmit="save(this,event)">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label">Province</label>
+                    <select id="provinceId" class="form-control" asp-items="ViewBag.Provinces" onchange="getCities(this)">
+                        <option value="">Choose a province</option>
+                    </select>
+                    <p style="display:none">
+                        <span class="spinner-border text-success spinner-border-sm loading"  role="status">
+                            <span class="sr-only">Loading...</span>
+                        </span>
+                    </p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label">City</label>
+                    <select id="cityId" class="form-control" >
+                        <option value="">Choose a city</option>
+                    </select>
+                </div>
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label asp-for="Title" class="control-label"></label>
@@ -20,7 +39,7 @@
                 <div class="form-group col-md-6">
                     <label asp-for="CourseId" class="control-label"></label>
                     <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId">
-                        <option value="" >Choose a day</option>
+                        <option value="">Choose a day</option>
                     </select>
                 </div>
             </div>
@@ -52,7 +71,12 @@
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <button type="submit" id="btnSubmit" class="btn btn-primary">
+                    <span class="spinner-border text-success spinner-border-sm loading" style="display:none" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </span>
+                    Create
+                </button>
             </div>
         </form>
     </div>
@@ -87,6 +111,46 @@
         $(el).parents('.form-row').first().remove();
     }
 
+    const save = (el , event) => {
+        event.preventDefault();
+        let data = $(el).serialize();
+        $("#btnSubmit").attr("disabled", "disabled");
+        $("#btnSubmit span.loading").css("display", "inline-block");
+
+        //jquery ajax
+        $.post('/CourseClass/CreateAjax', data, function (response) {
+            $("#btnSubmit").removeAttr("disabled");
+            $("#btnSubmit span.loading").css("display", "none");
+
+            console.log(response);
+            if (response.isSuccess) {
+                alert(response.message);
+                window.location.href = "/CourseClass/Index";
+            }
+        })
+    }
+
+    const getCities = (el) => {
+        $(el).next().css('display', 'block');
+        const provinceId = $(el).val();
+        const url = `/City/GetCitiesWithProvinceId?provinceId=${provinceId}`;
+        $.get(url, function (response) {
+            if (response.isSuccess)
+                fillCityCombo(response.data);
+            $(el).next().css('display', 'none');
+
+        })
+    }
+
+    const fillCityCombo = (data) => {
+        debugger;
+        $("#cityId option:not(:first-child)").remove();
+        for (var i = 0; i < data.length; i++) {
+            const item = data[i];
+            let option = `<option value="${item.id}">${item.cityName}</option>`;
+            $("#cityId").append(option);
+        }
+    }
 
 </script>
 }

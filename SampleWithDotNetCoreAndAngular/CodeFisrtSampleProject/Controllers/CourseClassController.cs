@@ -46,6 +46,7 @@ namespace CodeFisrtSampleProject.Controllers
             return View(courseClass);
         }
 
+        #region Create with MVC and JQuery
         // GET: CourseClass/Create
         public IActionResult Create()
         {
@@ -60,6 +61,25 @@ namespace CodeFisrtSampleProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CourseClassViewModel model) //[Bind("Id,Title,CourseId")] CourseClass courseClass
         {
+            var courseClass = new CourseClass
+            {
+                Title = model.Title,
+                CourseId = model.CourseId
+            };
+            courseClass.CourseClassDay = new List<CourseClassDay>();
+            model.Days.ToList().ForEach(item =>
+            {
+                courseClass.CourseClassDay.Add(new CourseClassDay
+                {
+                    Day = (Days)item.DayId,
+                    StartTime = item.StartTime,
+                    FinishTime = item.FinishTime
+                });
+            });
+
+            await _context.AddAsync(courseClass);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
             //if (ModelState.IsValid)
             //{
             //    _context.Add(courseClass);
@@ -68,9 +88,54 @@ namespace CodeFisrtSampleProject.Controllers
             //}
             //ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Title", courseClass.CourseId);
             //return View(courseClass);
+            // return View();
+        }
+
+        #endregion
+
+        #region Create with AJAX
+        public IActionResult CreateAjax()
+        {
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Title");
+            ViewData["Provinces"] = new SelectList(_context.Province, "Id", "ProvinceName");
+
             return View();
         }
 
+        // POST: CourseClass/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateAjax(CourseClassViewModel model) //[Bind("Id,Title,CourseId")] CourseClass courseClass
+        {
+            System.Threading.Thread.Sleep(4000);
+            var courseClass = new CourseClass
+            {
+                Title = model.Title,
+                CourseId = model.CourseId
+            };
+            courseClass.CourseClassDay = new List<CourseClassDay>();
+            model.Days.ToList().ForEach(item =>
+            {
+                courseClass.CourseClassDay.Add(new CourseClassDay
+                {
+                    Day = (Days)item.DayId,
+                    StartTime = item.StartTime,
+                    FinishTime = item.FinishTime
+                });
+            });
+
+            await _context.AddAsync(courseClass);
+            await _context.SaveChangesAsync();
+
+            var result = new AjaxActionResult<CourseClass>();
+            result.IsSuccess = true;
+            result.Message = "success...";
+            return Ok(result);
+        }
+
+        #endregion
         // GET: CourseClass/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

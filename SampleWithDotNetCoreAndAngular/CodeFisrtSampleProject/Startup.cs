@@ -27,7 +27,7 @@ namespace CodeFisrtSampleProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<OnlineEducationDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineEducationDb")));
-
+            services.AddMemoryCache();
             //Install-Package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
